@@ -253,8 +253,20 @@ public class AdminDashboard extends JFrame {
 
                 if(nama.isEmpty()) throw new Exception("Nama kosong");
 
-                for(int i=0; i<6; i++) {
-                    nilai[i] = Double.parseDouble(tfNilai[i].getText());
+                for (int i = 0; i < 6; i++) {
+                    String input = tfNilai[i].getText().trim();
+
+                    if (input.isEmpty()) {
+                        JOptionPane.showMessageDialog(d, "Nilai masih kosong!");
+                        return;
+                    }
+
+                    try {
+                        nilai[i] = Double.parseDouble(input);
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(d, "Nilai harus berupa angka!");
+                        return;
+                    }
                 }
 
                 // Cek Duplicate NISN jika Create New
