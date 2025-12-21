@@ -19,11 +19,10 @@ public class Siswa {
             total += n;
         }
         double avg = total / nilaiSemester.length;
-        // Jika rata-rata < 40 Tidak Lolos (Sesuai request: kurang dari 40 tidak lolos)
         this.status = (avg >= 40) ? "LOLOS" : "TIDAK LOLOS";
     }
 
-    // Getters and Setters
+
     public String getNisn() { return nisn; }
     public String getNama() { return nama; }
     public double[] getNilaiSemester() { return nilaiSemester; }

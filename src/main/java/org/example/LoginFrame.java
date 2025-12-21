@@ -121,7 +121,6 @@ public class LoginFrame extends JFrame {
         }
 
         if (rbAdmin.isSelected()) {
-            // Hardcode Admin untuk contoh
             if (id.equals("admin") && pass.equals("admin123")) {
                 showSuccess("Login Admin Berhasil");
                 new AdminDashboard().setVisible(true);
@@ -130,7 +129,6 @@ public class LoginFrame extends JFrame {
                 showFail();
             }
         } else {
-            // Login Siswa: ID dan Pass harus sama (NISN)
             if (!id.equals(pass)) {
                 JOptionPane.showMessageDialog(this, "Untuk siswa, Password harus sama dengan NISN.", "Login Gagal", JOptionPane.ERROR_MESSAGE);
                 return;
