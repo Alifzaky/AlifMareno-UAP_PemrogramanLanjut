@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class StyleTheme {
-    // Palet Warna Modern (Professional Blue)
+
     public static final Color BG_COLOR = new Color(192, 204, 225);
     public static final Color PRIMARY_COLOR = new Color(41, 128, 185); // Biru
     public static final Color ACCENT_COLOR = new Color(52, 152, 219);

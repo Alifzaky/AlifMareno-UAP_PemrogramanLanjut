@@ -229,19 +229,15 @@ public class AdminDashboard extends JFrame {
         JButton btnSave = new JButton("Simpan");
         gbc.gridx=1; gbc.gridy=8; d.add(btnSave, gbc);
 
-        // Pre-fill jika Edit
         if(existing != null) {
-            String suffix = existing.getNisn().substring(7); // Ambil 3 digit terakhir
+            String suffix = existing.getNisn().substring(7);
             tfSuffix.setText(suffix);
             tfNama.setText(existing.getNama());
             for(int i=0; i<6; i++) tfNilai[i].setText(String.valueOf(existing.getNilaiSemester()[i]));
-            // Tidak boleh ubah NISN saat edit (opsional, tapi biasanya Primary Key jangan diubah)
-            // tfSuffix.setEditable(false);
         }
 
         btnSave.addActionListener(ev -> {
             try {
-                // Validasi input 3 digit
                 if(tfSuffix.getText().length() != 3 || !tfSuffix.getText().matches("\\d+")) {
                     JOptionPane.showMessageDialog(d, "Suffix NISN harus 3 digit angka!");
                     return;
@@ -256,13 +252,11 @@ public class AdminDashboard extends JFrame {
                 for (int i = 0; i < 6; i++) {
                     String input = tfNilai[i].getText().trim();
 
-                    // 1. Cek kosong
                     if (input.isEmpty()) {
                         JOptionPane.showMessageDialog(d, "Nilai masih kosong!");
                         return;
                     }
 
-                    // 2. Cek angka
                     double val;
                     try {
                         val = Double.parseDouble(input);
@@ -271,7 +265,6 @@ public class AdminDashboard extends JFrame {
                         return;
                     }
 
-                    // 3. Cek range 0 - 100
                     if (val < 0 || val > 100) {
                         JOptionPane.showMessageDialog(d, "Nilai harus di antara 0 sampai 100!");
                         return;
@@ -281,7 +274,6 @@ public class AdminDashboard extends JFrame {
                 }
 
 
-                // Cek Duplicate NISN jika Create New
                 if(existing == null && siswaList.stream().anyMatch(s -> s.getNisn().equals(fullNisn))) {
                     JOptionPane.showMessageDialog(d, "NISN sudah ada!");
                     return;
@@ -290,7 +282,6 @@ public class AdminDashboard extends JFrame {
                 Siswa newSiswa = new Siswa(fullNisn, nama, nilai);
 
                 if(existing != null) {
-                    // Remove old, add new (update)
                     siswaList.remove(existing);
                 }
                 siswaList.add(newSiswa);

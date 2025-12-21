@@ -42,7 +42,7 @@ public class CsvHandler {
                 for (double n : s.getNilaiSemester()) {
                     sb.append(n).append(SEPARATOR);
                 }
-                sb.append(s.getStatus()); // Status disimpan tapi di-recalculate saat load
+                sb.append(s.getStatus());
                 bw.write(sb.toString());
                 bw.newLine();
             }

@@ -12,7 +12,7 @@ public class StudentDashboard extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        // Background Putih Bersih
+
         getContentPane().setBackground(Color.WHITE);
 
         // Konten Tengah
@@ -33,7 +33,7 @@ public class StudentDashboard extends JFrame {
         lblNama.setFont(StyleTheme.FONT_SUBTITLE);
         lblNama.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Panel Nilai (Grid Layout kecil)
+
         JPanel nilaiPanel = new JPanel(new GridLayout(2, 3, 10, 10));
         nilaiPanel.setBackground(new Color(240, 240, 240));
         nilaiPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -46,7 +46,7 @@ public class StudentDashboard extends JFrame {
             nilaiPanel.add(lbl);
         }
 
-        // Status Besar
+
         JLabel lblStatusTitle = new JLabel("DINYATAKAN:");
         lblStatusTitle.setFont(StyleTheme.FONT_REGULAR);
         lblStatusTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
