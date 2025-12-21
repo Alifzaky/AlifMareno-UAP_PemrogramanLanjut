@@ -256,18 +256,30 @@ public class AdminDashboard extends JFrame {
                 for (int i = 0; i < 6; i++) {
                     String input = tfNilai[i].getText().trim();
 
+                    // 1. Cek kosong
                     if (input.isEmpty()) {
                         JOptionPane.showMessageDialog(d, "Nilai masih kosong!");
                         return;
                     }
 
+                    // 2. Cek angka
+                    double val;
                     try {
-                        nilai[i] = Double.parseDouble(input);
+                        val = Double.parseDouble(input);
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(d, "Nilai harus berupa angka!");
                         return;
                     }
+
+                    // 3. Cek range 0 - 100
+                    if (val < 0 || val > 100) {
+                        JOptionPane.showMessageDialog(d, "Nilai harus di antara 0 sampai 100!");
+                        return;
+                    }
+
+                    nilai[i] = val;
                 }
+
 
                 // Cek Duplicate NISN jika Create New
                 if(existing == null && siswaList.stream().anyMatch(s -> s.getNisn().equals(fullNisn))) {
